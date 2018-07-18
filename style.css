@@ -64,7 +64,7 @@ body {
   background-image: url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500);
 }
 
-/* flex children */
+/* flex items */
 .panel>* {
   margin: 0;
   width: 100%;
@@ -78,6 +78,17 @@ body {
   /* centers the text in the panels */
 }
 
+.panel > *:first-child { transform: translateY(-100%); }
+/* text in top row moved to top out of sight */
+.panel.open-active > *:first-child { transform: translateY(0); }
+  /* animates the text back in to position */
+.panel > *:last-child { transform: translateY(100%); }
+/* text in bottom row moved to bottom out of sight */
+.panel.open-active > *:last-child { transform: translateY(0); }
+/* animates the text back in to position */
+
+
+
 .panel p {
   text-transform: uppercase;
   font-family: 'Amatic SC', cursive;
@@ -90,5 +101,7 @@ body {
 }
 
 .panel.open {
+  flex: 5;
+  /* panel will take 5 times the amount of extra room than the other panels */
   font-size: 40px;
 }
